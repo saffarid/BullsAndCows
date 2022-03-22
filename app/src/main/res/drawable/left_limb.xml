@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <rotate
+            android:toDegrees="90"
+            android:fromDegrees="90">
+            <selector>
+                <item
+                    android:height="4dp"
+                    android:width="50dp"
+                    android:drawable="@drawable/point"/>
+            </selector>
+        </rotate>
+    </item>
+</selector>
