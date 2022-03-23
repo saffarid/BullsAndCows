@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     android:background="@drawable/layout_bgr"
     android:layout_gravity="center"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    >
 
     <TextView
         android:id="@+id/result_message"
