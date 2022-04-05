@@ -145,13 +145,12 @@ object Game {
         }
         if (hasMistake)
             mistakesCount++
-            if(mistakesCount == 6) {
+            if(mistakesCount == 10) {
                 gameStatus = GameStatus.FAIL
             }
         else
             lastResultTable = currentRes
     }
-
 
     fun getDifficult(): Difficulty {
         return difficulty
@@ -171,5 +170,12 @@ object Game {
 
     public fun getGameStatus(): GameStatus {
         return gameStatus
+    }
+
+    public fun getNumber():String?{
+        if(gameStatus != GameStatus.RUN){
+            return puzzledNumber.joinToString("")
+        }
+        return null
     }
 }

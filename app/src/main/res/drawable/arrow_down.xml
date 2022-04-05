@@ -10,7 +10,7 @@
         android:translateX="3.999"
         android:translateY="5.333">
         <path
-            android:fillColor="#e8e8e8"
+            android:fillColor="@color/svg_color"
             android:pathData="M16,23a2.867,2.867,0,0,1-2.217-1.067l-7.017-8.5A3.5,3.5,0,0,1,6.334,9.75,2.933,2.933,0,0,1,8.984,8H23.017a2.933,2.933,0,0,1,2.65,1.75,3.5,3.5,0,0,1-.433,3.683l-7.017,8.5A2.867,2.867,0,0,1,16,23Z" />
     </group>
 

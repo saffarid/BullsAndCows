@@ -42,4 +42,10 @@
     <style name="ResText" parent="Text">
         <item name="android:padding">5dp</item>
     </style>
+    <style name="notMistake">
+        <item name="android:fillColor">@color/svg_color</item>
+    </style>
+    <style name="mistake">
+        <item name="android:fillColor">@color/mistake</item>
+    </style>
 </resources>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:id="@+id/background">
         <shape android:shape="rectangle">
@@ -22,14 +21,14 @@
     <item
         android:id="@+id/beam_up"
         android:width="@dimen/stroke_width"
-        android:height="650dp"
+        android:height="640dp"
         android:drawable="@drawable/point"
         android:left="345dp"
-        android:top="30dp" />
+        android:top="40dp" />
 
     <item
         android:id="@+id/beam_hor"
-        android:width="220dp"
+        android:width="225dp"
         android:height="@dimen/stroke_width"
         android:drawable="@drawable/point"
         android:left="130dp"
@@ -38,24 +37,18 @@
     <item
         android:id="@+id/beam_down"
         android:width="@dimen/stroke_width"
-        android:height="100dp"
+        android:height="90dp"
         android:drawable="@drawable/point"
         android:left="130dp"
-        android:top="30dp" />
+        android:top="40dp" />
 
     <item
         android:id="@+id/head"
         android:width="120dp"
         android:height="120dp"
+        android:drawable="@drawable/head"
         android:left="75dp"
-        android:top="130dp">
-        <shape android:shape="oval">
-            <stroke
-                android:width="@dimen/stroke_width"
-                android:color="@color/svg_color" />
-            <solid android:color="@color/transparent"/>
-        </shape>
-    </item>
+        android:top="130dp" />
 
     <item
         android:id="@+id/body"
@@ -64,5 +57,41 @@
         android:drawable="@drawable/point"
         android:left="130dp"
         android:top="240dp" />
+
+    <item
+        android:id="@+id/right_hand"
+        android:width="100dp"
+        android:height="110dp"
+        android:drawable="@drawable/right_hand"
+        android:left="40dp"
+        android:top="240dp" />
+
+    <item
+        android:id="@+id/left_hand"
+        android:width="100dp"
+        android:height="110dp"
+        android:drawable="@drawable/left_hand"
+        android:left="130dp"
+        android:top="240dp" />
+
+    <item
+        android:id="@+id/right_foot"
+        android:width="100dp"
+        android:height="110dp"
+        android:drawable="@drawable/right_foot"
+        android:left="40dp"
+        android:top="435dp" />
+
+    <item
+        android:id="@+id/left_foot"
+        android:width="100dp"
+        android:height="110dp"
+        android:drawable="@drawable/left_foot"
+        android:left="130dp"
+        android:top="435dp" />
+
+
+
+
 
 </layer-list>

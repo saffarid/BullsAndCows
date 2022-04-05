@@ -1,11 +1,9 @@
 package com.saffarid.bowsandcows.gui
 
-import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import android.widget.Button
 import android.widget.FrameLayout
 import android.widget.TextView
@@ -60,7 +58,7 @@ class MainActivity : AppCompatActivity() {
 
         var fragmentPlayer = fragmentManager!!.findFragmentById(R.id.player)
         if(fragmentPlayer == null){
-            fragmentPlayer = PlayerFragment( Game.getPlayer() );
+            fragmentPlayer = PlayerFragment( Game.getPlayer(), this::checkGame );
             fragmentManager
                 .beginTransaction()
                 .add(R.id.player, fragmentPlayer)
@@ -94,7 +92,7 @@ class MainActivity : AppCompatActivity() {
         if(Game.getGameStatus() == GameStatus.RUN) return
         var textResult:String
         if(Game.getGameStatus() == GameStatus.FAIL){
-            textResult = resources.getString(R.string.fail)
+            textResult = String.format(resources.getString(R.string.fail), Game.getNumber())
         } else {
             textResult = resources.getString(R.string.win)
         }
@@ -115,7 +113,7 @@ class MainActivity : AppCompatActivity() {
     private fun showNewGameDialog(){
 //        StartNewGameDialog().show(fragmentManager, "new_game")
         val interstitialAd = InterstitialAd(this)
-        interstitialAd.adUnitId = resources.getString(R.string.testInterstitialAd)
+        interstitialAd.adUnitId = resources.getString(R.string.interstitialAd)
         interstitialAd.adListener = object : AdListener(){
             override fun onAdLoaded() {
                 if (interstitialAd.isLoaded){

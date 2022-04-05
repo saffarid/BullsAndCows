@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Bulls and cows</string>
+    <string name="new_game">New game</string>
+    <string name="duplicate">Repeating numbers were found</string>
+    <string name="rules_label">Rules</string>
+    <string name="number">Number</string>
+    <string name="easy">Easy</string>
+    <string name="normal">Normal</string>
+    <string name="hard">Hard</string>
+    <string name="fail">You lose. Number: %s</string>
+    <string name="win">You win!</string>
+    <string name="results_history">Storecard</string>
+    <string name="current_result">Current result</string>
+    <string name="rules">
+        The game asks for a number consisting of four different digits.
+        The player\'s task is to determine that number.
+        With each turn the possibility of calculating the number increases.
+        The result of each move is judged by the number of bulls and cows.
+        If the number and its position coincide, it is a bull.
+        If the digit matches but its position does not, it is a cow.
+    </string>
+</resources>

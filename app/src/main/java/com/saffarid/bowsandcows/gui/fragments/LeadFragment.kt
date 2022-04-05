@@ -1,8 +1,13 @@
 package com.saffarid.bowsandcows.gui.fragments
 
+import android.graphics.ColorFilter
 import android.graphics.PorterDuff
-import android.graphics.drawable.LayerDrawable
+import android.graphics.PorterDuffColorFilter
+import android.graphics.drawable.*
+import android.os.Build
+
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,7 +26,11 @@ class LeadFragment() : Fragment() {
         R.id.beam_hor,
         R.id.beam_down,
         R.id.head,
-        R.id.body
+        R.id.body,
+        R.id.left_hand,
+        R.id.right_hand,
+        R.id.left_foot,
+        R.id.right_foot
     )
 
     private var notMistake = R.color.not_mistake
@@ -56,7 +65,7 @@ class LeadFragment() : Fragment() {
 
         hangman = v.findViewById(R.id.hangman)
 
-        hangmanDrawable = resources.getDrawable(R.drawable.hangman) as LayerDrawable
+        hangmanDrawable = resources.getDrawable(R.drawable.hangman, null) as LayerDrawable
 
         hangman.setImageDrawable(hangmanDrawable)
 
@@ -72,18 +81,18 @@ class LeadFragment() : Fragment() {
                 cowsCount.setText(Game.getHistory().last().cows.toString())
                 bullsCount.setText(Game.getHistory().last().bulls.toString())
 
-                val index = Game.getMistakeCount()
-                if (index > 0)
-                    hangmanDrawable.getDrawable(index)!!
-                        .setColorFilter(resources.getColor(mistake), PorterDuff.Mode.ADD)
+                if (Game.getMistakeCount() > 0) {
+                    hangmanDrawable.getDrawable(Game.getMistakeCount()).colorFilter =
+                        PorterDuffColorFilter(resources.getColor(mistake), PorterDuff.Mode.MULTIPLY)
+                }
             } else {
                 number.setText("")
                 cowsCount.setText("")
                 bullsCount.setText("")
 
-                for (i in 1..(hangmanDrawable.numberOfLayers - 1)) {
-                    hangmanDrawable.getDrawable(i)!!
-                        .setColorFilter(resources.getColor(notMistake), PorterDuff.Mode.MULTIPLY)
+                for (i in 1..hangmanDrawable.numberOfLayers - 1) {
+                    hangmanDrawable.getDrawable(i).colorFilter =
+                        PorterDuffColorFilter(resources.getColor(notMistake), PorterDuff.Mode.SRC_IN)
                 }
             }
 

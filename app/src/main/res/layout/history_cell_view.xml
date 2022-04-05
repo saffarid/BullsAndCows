@@ -3,6 +3,9 @@
     android:layout_height="wrap_content"
     android:columnCount="6"
     android:rowCount="1"
+    android:layout_marginTop="2dp"
+    android:layout_marginBottom="2dp"
+    android:background="@color/active"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <TextView
@@ -19,17 +22,20 @@
         android:layout_width="75dp"
         android:hint="----"
         style="@style/ResText"
+        android:gravity="center"
         />
 
-    <TextView
+    <ImageView
         android:layout_row="0"
         android:layout_column="2"
-        android:text="bulls"
-        style="@style/ResText"
+        android:background="@drawable/bull"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
         />
 
     <TextView
         android:id="@+id/bullsCount"
+        android:gravity="center"
         android:layout_row="0"
         android:layout_column="3"
         android:layout_width="35dp"
@@ -37,15 +43,17 @@
         style="@style/ResText"
         />
 
-    <TextView
+    <ImageView
         android:layout_row="0"
         android:layout_column="4"
-        android:text="cows"
-        style="@style/ResText"
+        android:background="@drawable/cow"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
         />
 
     <TextView
         android:id="@+id/cowsCount"
+        android:gravity="center"
         android:layout_row="0"
         android:layout_column="5"
         android:layout_width="35dp"

@@ -9,10 +9,10 @@ android {
 
     defaultConfig {
         applicationId "com.saffarid.myapplication"
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdkVersion 30
-        versionCode 1
-        versionName "1.0"
+        versionCode 4
+        versionName "2.1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -46,6 +46,8 @@ dependencies {
     runtimeOnly 'androidx.viewpager:viewpager:1.0.0'
 // https://mvnrepository.com/artifact/androidx.recyclerview/recyclerview
     runtimeOnly 'androidx.recyclerview:recyclerview:1.2.0'
+// https://mvnrepository.com/artifact/androidx.vectordrawable/vectordrawable
+    runtimeOnly 'androidx.vectordrawable:vectordrawable:1.1.0'
 
 
 

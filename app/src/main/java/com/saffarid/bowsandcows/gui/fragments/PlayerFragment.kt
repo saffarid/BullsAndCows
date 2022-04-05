@@ -10,9 +10,11 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.saffarid.bowsandcows.R
 import com.saffarid.bowsandcows.model.DuplicateNumberException
+import com.saffarid.bowsandcows.model.Game
+import com.saffarid.bowsandcows.model.GameStatus
 import com.saffarid.bowsandcows.model.Player
 
-class PlayerFragment(player: Player): Fragment() {
+class PlayerFragment(player: Player, check:() -> Unit): Fragment() {
 
     private val player: Player
 
@@ -22,9 +24,12 @@ class PlayerFragment(player: Player): Fragment() {
 
     private lateinit var accept: ImageButton
 
+    private val check: () -> Unit
+
     init {
         this.player = player
         this.player.listeners.add(this::refresh)
+        this.check = check
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -62,10 +67,18 @@ class PlayerFragment(player: Player): Fragment() {
      * Функция принятия числа
      * */
     public fun accept(v: View){
-        try {
-            player.sendNumber()
-        } catch (e: DuplicateNumberException){
-            Toast.makeText(activity!!, "Есть дубликаты", Toast.LENGTH_SHORT).show()
+        if(Game.getGameStatus() == GameStatus.RUN) {
+            try {
+                player.sendNumber()
+            } catch (e: DuplicateNumberException) {
+                Toast.makeText(
+                    activity!!,
+                    resources.getText(R.string.duplicate),
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        } else {
+            check()
         }
     }
 
