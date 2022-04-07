@@ -2,7 +2,6 @@ package com.saffarid.bowsandcows.model
 
 import android.util.Log
 import java.util.ArrayList
-import kotlin.properties.Delegates
 
 object Game {
 

@@ -1,63 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<GridLayout android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:columnCount="6"
-    android:rowCount="1"
-    android:layout_marginTop="2dp"
-    android:layout_marginBottom="2dp"
-    android:background="@color/active"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<layout>
+    <data>
+        <variable
+            name="cell"
+            type="com.saffarid.bowsandcows.model.HistoryCell" />
+    </data>
+    <GridLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="6"
+        android:rowCount="1"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="2dp"
+        android:background="@color/active"
+        xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <TextView
-        android:layout_row="0"
-        android:layout_column="0"
-        android:text="@string/number"
-        style="@style/ResText"
-        />
+        <TextView
+            android:layout_row="0"
+            android:layout_column="0"
+            android:text="@string/number"
+            style="@style/ResText"
+            />
 
-    <TextView
-        android:id="@+id/number"
-        android:layout_row="0"
-        android:layout_column="1"
-        android:layout_width="75dp"
-        android:hint="----"
-        style="@style/ResText"
-        android:gravity="center"
-        />
+        <TextView
+            android:id="@+id/number"
+            android:layout_row="0"
+            android:layout_column="1"
+            android:layout_width="75dp"
+            android:hint="----"
+            android:text='@{ (cell != null) ? cell.numberAsString : ""}'
+            style="@style/ResText"
+            android:gravity="center"
+            />
 
-    <ImageView
-        android:layout_row="0"
-        android:layout_column="2"
-        android:background="@drawable/bull"
-        android:paddingLeft="5dp"
-        android:paddingRight="5dp"
-        />
+        <ImageView
+            android:layout_row="0"
+            android:layout_column="2"
+            android:background="@drawable/bull"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            />
 
-    <TextView
-        android:id="@+id/bullsCount"
-        android:gravity="center"
-        android:layout_row="0"
-        android:layout_column="3"
-        android:layout_width="35dp"
-        android:hint="-"
-        style="@style/ResText"
-        />
+        <TextView
+            android:id="@+id/bullsCount"
+            android:gravity="center"
+            android:layout_row="0"
+            android:layout_column="3"
+            android:layout_width="35dp"
+            android:text='@{(cell != null) ? String.valueOf(cell.bulls) : ""}'
+            android:hint="-"
+            style="@style/ResText"
+            />
 
-    <ImageView
-        android:layout_row="0"
-        android:layout_column="4"
-        android:background="@drawable/cow"
-        android:paddingLeft="5dp"
-        android:paddingRight="5dp"
-        />
+        <ImageView
+            android:layout_row="0"
+            android:layout_column="4"
+            android:background="@drawable/cow"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            />
 
-    <TextView
-        android:id="@+id/cowsCount"
-        android:gravity="center"
-        android:layout_row="0"
-        android:layout_column="5"
-        android:layout_width="35dp"
-        android:hint="-"
-        style="@style/ResText"
-        />
-</GridLayout>
+        <TextView
+            android:id="@+id/cowsCount"
+            android:gravity="center"
+            android:layout_row="0"
+            android:layout_column="5"
+            android:layout_width="35dp"
+            android:text='@{ (cell != null) ? String.valueOf(cell.cows) : "" }'
+            android:hint="-"
+            style="@style/ResText"
+            />
+    </GridLayout>
+</layout>

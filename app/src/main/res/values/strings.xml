@@ -5,6 +5,7 @@
     <string name="bannerId" translatable="false">ca-app-pub-5587241968658127/3904357895</string>
     <string name="interstitialAd" translatable="false">ca-app-pub-5587241968658127/3925373343</string>
     <string name="testInterstitialAd" translatable="false">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="empty_string" translatable="false">""</string>
     <string name="new_game">Новая игра</string>
     <string name="rules_label">Правила</string>
     <string name="duplicate">Обнаружены повторяющиеся числа</string>

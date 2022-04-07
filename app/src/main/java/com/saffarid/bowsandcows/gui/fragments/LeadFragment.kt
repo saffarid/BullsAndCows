@@ -13,8 +13,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.saffarid.bowsandcows.R
+import com.saffarid.bowsandcows.databinding.FragmentLeadBinding
 import com.saffarid.bowsandcows.model.Game
 import com.saffarid.bowsandcows.model.GameStatus
 
@@ -37,12 +39,7 @@ class LeadFragment() : Fragment() {
     private var mistake = R.color.mistake
 
     private lateinit var hangmanDrawable: LayerDrawable
-
-    private lateinit var cowsCount: TextView
-    private lateinit var bullsCount: TextView
-    private lateinit var number: TextView
-
-    private lateinit var hangman: ImageView
+    private lateinit var binding: FragmentLeadBinding
 
     init {
         Game.listeners.add(this::refreshLastResult)
@@ -57,38 +54,27 @@ class LeadFragment() : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val v = inflater.inflate(R.layout.fragment_lead, container, false)
-
-        cowsCount = v.findViewById(R.id.cowsCount)
-        bullsCount = v.findViewById(R.id.bullsCount)
-        number = v.findViewById(R.id.number)
-
-        hangman = v.findViewById(R.id.hangman)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_lead, container, false)
 
         hangmanDrawable = resources.getDrawable(R.drawable.hangman, null) as LayerDrawable
-
-        hangman.setImageDrawable(hangmanDrawable)
+        binding.hangman.setImageDrawable(hangmanDrawable)
 
         refreshLastResult()
 
-        return v
+        return binding.root
     }
 
     private fun refreshLastResult() {
         if (Game.getGameStatus() == GameStatus.RUN) {
             if (Game.getHistory().isNotEmpty()) {
-                number.setText(Game.getHistory().last().number.joinToString(""))
-                cowsCount.setText(Game.getHistory().last().cows.toString())
-                bullsCount.setText(Game.getHistory().last().bulls.toString())
+                binding.historyCellView.cell = Game.getHistory().last()
 
                 if (Game.getMistakeCount() > 0) {
                     hangmanDrawable.getDrawable(Game.getMistakeCount()).colorFilter =
                         PorterDuffColorFilter(resources.getColor(mistake), PorterDuff.Mode.MULTIPLY)
                 }
             } else {
-                number.setText("")
-                cowsCount.setText("")
-                bullsCount.setText("")
+                binding.historyCellView.cell = null
 
                 for (i in 1..hangmanDrawable.numberOfLayers - 1) {
                     hangmanDrawable.getDrawable(i).colorFilter =

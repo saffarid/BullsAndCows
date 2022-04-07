@@ -5,10 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.saffarid.bowsandcows.R
+import com.saffarid.bowsandcows.databinding.HistoryCellViewBinding
 import com.saffarid.bowsandcows.model.Game
 import com.saffarid.bowsandcows.model.GameStatus
 import com.saffarid.bowsandcows.model.HistoryCell
@@ -45,20 +47,15 @@ class HistoryFragment : Fragment() {
 
     internal inner class HistoryCellHolder : RecyclerView.ViewHolder {
 
-        private val number:TextView
-        private val bulls:TextView
-        private val cows:TextView
+        private lateinit var binding: HistoryCellViewBinding
 
-        constructor(v: View) : super(v){
-            number = v.findViewById(R.id.number)
-            bulls = v.findViewById(R.id.bullsCount)
-            cows = v.findViewById(R.id.cowsCount)
+        constructor(v: HistoryCellViewBinding) : super(v.root){
+            binding = v
         }
 
         public fun bind(historyCell: HistoryCell){
-            number.text = historyCell.number.joinToString("")
-            bulls.text = historyCell.bulls.toString()
-            cows.text = historyCell.cows.toString()
+            binding.cell = historyCell
+            binding.executePendingBindings()
         }
     }
 
@@ -71,8 +68,8 @@ class HistoryFragment : Fragment() {
         }
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HistoryCellHolder {
-            val from = LayoutInflater.from(activity)
-            return HistoryCellHolder( from.inflate(R.layout.history_cell_view, parent, false) )
+            val inflater = LayoutInflater.from(parent.context)
+            return HistoryCellHolder( DataBindingUtil.inflate<HistoryCellViewBinding>(inflater, R.layout.history_cell_view, parent, false) )
         }
 
         override fun getItemCount(): Int {

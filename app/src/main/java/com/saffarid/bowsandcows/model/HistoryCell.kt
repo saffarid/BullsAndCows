@@ -15,4 +15,9 @@ class HistoryCell(
         this.cows = cows
         this.bulls = bulls
     }
+
+    fun getNumberAsString():String{
+        return number.joinToString("")
+    }
+
 }
